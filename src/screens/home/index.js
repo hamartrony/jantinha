@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import BotaoOpcoes from "../../components/botao_opcoes";
 import Promo from "../../components/card_promo";
 import Head from "../../components/header";
@@ -35,14 +35,8 @@ export default function Home({ navigation }) {
       </View>
 
       <View style={styles.promo}>
-        <Text>Promos</Text>
         <Promo />
       </View>
-
-      <Button
-        onPress={() => navigation.navigate("Login")}
-        title="Go to notifications"
-      />
     </View>
   );
 }
@@ -55,6 +49,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     padding: 4,
+    marginTop: 10,
+    marginBottom: 10,
   },
   promo: {
     flex: 2,
