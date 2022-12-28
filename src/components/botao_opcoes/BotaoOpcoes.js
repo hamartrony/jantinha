@@ -12,10 +12,7 @@ const screenWidth = Dimensions.get("window").width / 6;
 export default function BotaoOpcoes({ tittle, icon, navigation }) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate(`${tittle}`)}
-        title="Go to notifications"
-      >
+      <TouchableOpacity onPress={() => navigation.navigate(`${tittle}`)}>
         <Text>{tittle}</Text>
         <Image source={icon} style={styles.icon} />
       </TouchableOpacity>

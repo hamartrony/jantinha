@@ -1,12 +1,11 @@
-import { View } from "react-native";
-import Head from "../../components/header";
-import Vitrine from "../../components/vitrine";
+import Vitrine from "../../components/vitrine/Vitrine";
 
 import ant from "../../images/produtos/bebidas/antartica.jpeg";
 import bra from "../../images/produtos/bebidas/bramah.jpeg";
 import bud from "../../images/produtos/bebidas/bud.jpeg";
 import coca from "../../images/produtos/bebidas/coca.jpeg";
 import hin from "../../images/produtos/bebidas/hineken.jpeg";
+import ScreenDefault from "../screen_default/ScreenDefault";
 
 const menu = [
   {
@@ -83,9 +82,8 @@ const menu = [
 
 export default function Bebida({ navigation }) {
   return (
-    <View>
-      <Head />
+    <ScreenDefault navigation={navigation}>
       <Vitrine data={menu} navigation={navigation} />
-    </View>
+    </ScreenDefault>
   );
 }

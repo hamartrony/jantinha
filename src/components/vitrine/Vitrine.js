@@ -1,5 +1,5 @@
-import { Button, ScrollView, StyleSheet, View } from "react-native";
-import CardProduto from "../card_produtos";
+import { ScrollView, StyleSheet, View } from "react-native";
+import CardProduto from "../card_produtos/CardProdutos";
 
 export default function Vitrine({ data, navigation }) {
   return (
@@ -18,7 +18,6 @@ export default function Vitrine({ data, navigation }) {
           );
         })}
       </ScrollView>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
     </View>
   );
 }
@@ -26,7 +25,6 @@ export default function Vitrine({ data, navigation }) {
 const styles = StyleSheet.create({
   menu: {
     width: "100%",
-    height: "80%",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",

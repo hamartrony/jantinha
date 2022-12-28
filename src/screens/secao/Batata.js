@@ -1,11 +1,10 @@
-import { View } from "react-native";
-import Head from "../../components/header";
-import Vitrine from "../../components/vitrine";
+import Vitrine from "../../components/vitrine/Vitrine";
 
 import batata200 from "../../images/produtos/batatas/batata.png";
 import batata500 from "../../images/produtos/batatas/batata500.png";
 import chedar200 from "../../images/produtos/batatas/chedar.png";
 import chedar500 from "../../images/produtos/batatas/chedar500.png";
+import ScreenDefault from "../screen_default/ScreenDefault";
 
 const menu = [
   {
@@ -41,9 +40,8 @@ const menu = [
 
 export default function Batata({ navigation }) {
   return (
-    <View>
-      <Head />
+    <ScreenDefault navigation={navigation}>
       <Vitrine data={menu} navigation={navigation} />
-    </View>
+    </ScreenDefault>
   );
 }

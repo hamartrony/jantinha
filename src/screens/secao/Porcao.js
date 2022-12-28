@@ -1,6 +1,4 @@
-import { View } from "react-native";
-import Head from "../../components/header";
-import Vitrine from "../../components/vitrine";
+import Vitrine from "../../components/vitrine/Vitrine";
 
 import arroz from "../../images/produtos/porcao/pc_arroz.png";
 import bigbrother from "../../images/produtos/porcao/pc_bigbrother.png";
@@ -12,8 +10,9 @@ import frios from "../../images/produtos/porcao/pc_frios.png";
 import tila from "../../images/produtos/porcao/pc_tila.png";
 import tilapia from "../../images/produtos/porcao/pc_tilapia.png";
 import vitao from "../../images/produtos/porcao/pc_vitao.png";
+import ScreenDefault from "../screen_default/ScreenDefault";
 
-const porcao = [
+const menu = [
   {
     id: 1,
     tittle: "Porção de Bolinho de Tilápia 350g",
@@ -88,9 +87,8 @@ const porcao = [
 
 export default function Porcao({ navigation }) {
   return (
-    <View>
-      <Head />
-      <Vitrine data={porcao} navigation={navigation} />
-    </View>
+    <ScreenDefault navigation={navigation}>
+      <Vitrine data={menu} navigation={navigation} />
+    </ScreenDefault>
   );
 }

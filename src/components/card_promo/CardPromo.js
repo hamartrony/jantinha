@@ -23,12 +23,15 @@ export default function Promos() {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "35%",
+    width: "95%",
+    height: "50%",
     backgroundColor: "white",
+    borderRadius: 15,
+    alignSelf: "center",
   },
   img: {
     width: "100%",
     height: "100%",
+    borderRadius: 15,
   },
 });
