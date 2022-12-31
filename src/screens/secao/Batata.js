@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import Vitrine from "../../components/vitrine/Vitrine";
+import MenuContext from "../../context/MenuContext";
 
 import batata200 from "../../images/produtos/batatas/batata.png";
 import batata500 from "../../images/produtos/batatas/batata500.png";
@@ -39,9 +41,10 @@ const menu = [
 ];
 
 export default function Batata({ navigation }) {
+  const { state } = useContext(MenuContext);
   return (
     <ScreenDefault navigation={navigation}>
-      <Vitrine data={menu} navigation={navigation} />
+      <Vitrine data={state.menu[2].itens} navigation={navigation} />
     </ScreenDefault>
   );
 }

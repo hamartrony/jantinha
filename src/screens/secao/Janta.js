@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import Vitrine from "../../components/vitrine/Vitrine";
+import MenuContext from "../../context/MenuContext";
 import arroz from "../../images/produtos/janta/arroz.png";
 import farofa from "../../images/produtos/janta/farofa.png";
 import feijao from "../../images/produtos/janta/feijao.png";
@@ -63,9 +65,10 @@ const menu = [
 ];
 
 export default function Janta({ navigation }) {
+  const { state } = useContext(MenuContext);
   return (
     <ScreenDefault navigation={navigation}>
-      <Vitrine data={menu} navigation={navigation} />
+      <Vitrine data={state.menu[0].itens} navigation={navigation} />
     </ScreenDefault>
   );
 }

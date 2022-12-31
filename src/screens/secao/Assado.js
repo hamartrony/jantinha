@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import Vitrine from "../../components/vitrine/Vitrine";
+import MenuContext from "../../context/MenuContext";
 
 import arroz from "../../images/produtos/porcao/pc_arroz.png";
 import bigbrother from "../../images/produtos/porcao/pc_bigbrother.png";
@@ -86,9 +88,13 @@ const menu = [
 ];
 
 export default function Assado({ navigation }) {
+  //const {state, dispatch} = useContext(MenuContext);
+  const { state } = useContext(MenuContext);
+  //console.log("MENU EM ASSADO", Object.keys(ctx.state.initialState[0].itens));
+
   return (
     <ScreenDefault navigation={navigation}>
-      <Vitrine data={menu} navigation={navigation} />
+      <Vitrine data={state.menu[1].itens} navigation={navigation} />
     </ScreenDefault>
   );
 }

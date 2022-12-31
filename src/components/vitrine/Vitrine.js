@@ -7,12 +7,12 @@ export default function Vitrine({ data, navigation }) {
       <ScrollView style={styles.menu}>
         {data.map((item) => {
           return (
-            <View key={item.id}>
+            <View key={item._id}>
               <CardProduto
-                tittle={item.tittle}
+                tittle={item.title}
                 description={item.description}
                 price={item.price}
-                img={item.img}
+                img={item.image}
               />
             </View>
           );
@@ -28,7 +28,5 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
-
-    // justifyContent: "space-around",
   },
 });

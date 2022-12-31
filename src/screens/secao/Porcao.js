@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import Vitrine from "../../components/vitrine/Vitrine";
+import MenuContext from "../../context/MenuContext";
 
 import arroz from "../../images/produtos/porcao/pc_arroz.png";
 import bigbrother from "../../images/produtos/porcao/pc_bigbrother.png";
@@ -86,9 +88,10 @@ const menu = [
 ];
 
 export default function Porcao({ navigation }) {
+  const { state } = useContext(MenuContext);
   return (
     <ScreenDefault navigation={navigation}>
-      <Vitrine data={menu} navigation={navigation} />
+      <Vitrine data={state.menu[3].itens} navigation={navigation} />
     </ScreenDefault>
   );
 }

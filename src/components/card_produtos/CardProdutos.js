@@ -1,4 +1,5 @@
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import icon from "../../images/vitaoLogo.jpg";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -11,7 +12,7 @@ export default function CardProduto({ tittle, description, price, img }) {
         <Text style={styles.price}>R${parseFloat(price).toFixed(2)}</Text>
       </View>
 
-      <Image source={img} style={styles.img} />
+      <Image source={img ? { uri: img } : icon} style={styles.img} />
     </View>
   );
 }
@@ -23,9 +24,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2,
     margin: 2,
     backgroundColor: "white",
     marginBottom: 5,
@@ -35,9 +33,6 @@ const styles = StyleSheet.create({
   info: {
     width: "70%",
     flexDirection: "column",
-    // borderColor: "blue",
-    // borderStyle: "solid",
-    // borderWidth: 2,
     justifyContent: "space-around",
   },
   img: {
@@ -49,7 +44,6 @@ const styles = StyleSheet.create({
   },
   tittle: {
     fontSize: 18,
-    // alignSelf: "center",
   },
   price: {
     fontSize: 20,
