@@ -2,7 +2,9 @@ import { StyleSheet, Text, View } from "react-native";
 import { Icon } from "react-native-elements";
 import ScreenDefault from "../screen_default/ScreenDefault";
 
+import { useContext } from "react";
 import BotaoOpcoes from "../../components/botao_opcoes/BotaoOpcoes";
+import CartContext from "../../context/CartContext";
 import assado from "../../images/assado.png";
 import batatas from "../../images/batatas.png";
 import bebidas from "../../images/bebidas.png";
@@ -18,26 +20,39 @@ const menu = [
 ];
 
 export default function Carrinho({ navigation }) {
+  const { cart } = useContext(CartContext);
+
   return (
     <ScreenDefault navigation={navigation}>
-      <View style={styles.container}>
-        <Text style={styles.text}>Voce ainda nao adicionou nenhum item.</Text>
-        <Icon name="shopping-cart" size={80} />
-        <Text style={styles.text}>Não perca a oporunidade!</Text>
-        <View style={styles.menu}>
-          {menu.map((item) => {
-            return (
-              <View key={item.id}>
-                <BotaoOpcoes
-                  tittle={item.name}
-                  icon={item.src}
-                  navigation={navigation}
-                />
-              </View>
-            );
-          })}
+      {cart.length > 0 ? ( //Renderiza o carrinho cheio
+        cart.map((item) => {
+          return (
+            <View key={item.nome}>
+              <Text>{item.nome}</Text>
+            </View>
+          );
+        })
+      ) : (
+        //Renderiza carrinho vazio
+        <View style={styles.container}>
+          <Text style={styles.text}>Voce ainda nao adicionou nenhum item.</Text>
+          <Icon name="shopping-cart" size={80} />
+          <Text style={styles.text}>Não perca a oporunidade!</Text>
+          <View style={styles.menu}>
+            {menu.map((item) => {
+              return (
+                <View key={item.id}>
+                  <BotaoOpcoes
+                    tittle={item.name}
+                    icon={item.src}
+                    navigation={navigation}
+                  />
+                </View>
+              );
+            })}
+          </View>
         </View>
-      </View>
+      )}
     </ScreenDefault>
   );
 }

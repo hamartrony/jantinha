@@ -1,5 +1,6 @@
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import icon from "../../images/vitaoLogo.jpg";
+import BotaoCart from "../botao_cart/BotaoCart";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -10,6 +11,7 @@ export default function CardProduto({ tittle, description, price, img }) {
         <Text style={styles.tittle}>{tittle}</Text>
         <Text style={styles.desc}>{description}</Text>
         <Text style={styles.price}>R${parseFloat(price).toFixed(2)}</Text>
+        <BotaoCart icon={"plus"} />
       </View>
 
       <Image source={img ? { uri: img } : icon} style={styles.img} />

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
+//configuração do Axios para requisição da WEB
 const axs = axios.create({
   baseURL: "https://clientauth.anota.ai/clientauth/nm-category/v3/?pdv=true",
   headers: {
@@ -14,6 +15,7 @@ const MenuContext = createContext({});
 export const MenuProvider = ({ children }) => {
   const [menu, setMenu] = useState([]);
 
+  //Busca do MENU na WEB
   useEffect(() => {
     axs
       .get()
@@ -24,9 +26,8 @@ export const MenuProvider = ({ children }) => {
       .catch(function (error) {
         console.log(error);
       });
+    console.log("BUSQUEI NA WEB>>>>>>>>>>>>>>>>>>>>>>>>>");
   }, []);
-
-  console.log("PROVIDER", menu);
 
   return (
     <MenuContext.Provider value={{ state: { menu } }}>
