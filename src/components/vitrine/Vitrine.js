@@ -9,6 +9,7 @@ export default function Vitrine({ data, navigation }) {
           return (
             <View key={item._id}>
               <CardProduto
+                prod={item}
                 tittle={item.title}
                 description={item.description}
                 price={item.price}

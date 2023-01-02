@@ -4,6 +4,7 @@ import ScreenDefault from "../screen_default/ScreenDefault";
 
 import { useContext } from "react";
 import BotaoOpcoes from "../../components/botao_opcoes/BotaoOpcoes";
+import CardProduto from "../../components/card_produtos/CardProdutos";
 import CartContext from "../../context/CartContext";
 import assado from "../../images/assado.png";
 import batatas from "../../images/batatas.png";
@@ -27,8 +28,15 @@ export default function Carrinho({ navigation }) {
       {cart.length > 0 ? ( //Renderiza o carrinho cheio
         cart.map((item) => {
           return (
-            <View key={item.nome}>
-              <Text>{item.nome}</Text>
+            <View key={item._id}>
+              <CardProduto
+                key={item._id}
+                prod={item}
+                tittle={item.title}
+                description={item.description}
+                price={item.price}
+                img={item.image}
+              />
             </View>
           );
         })
