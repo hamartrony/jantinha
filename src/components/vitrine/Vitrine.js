@@ -1,11 +1,18 @@
+import { useContext, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
+import { Button } from "react-native-elements";
+import MenuContext from "../../providers/MenuContext";
 import CardProduto from "../card_produtos/CardProdutos";
 
 export default function Vitrine({ data, navigation }) {
+  const [menu] = useState(data);
+  const { addCart } = useContext(MenuContext);
+
   return (
     <View>
+      <Button onPress={() => addCart} title="Concluir Pedido"></Button>
       <ScrollView style={styles.menu}>
-        {data.map((item) => {
+        {menu.map((item) => {
           return (
             <View key={item._id}>
               <CardProduto
@@ -14,6 +21,7 @@ export default function Vitrine({ data, navigation }) {
                 description={item.description}
                 price={item.price}
                 img={item.image}
+                quantidade={item.qtd ? item.qtd : 1}
               />
             </View>
           );

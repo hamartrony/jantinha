@@ -5,12 +5,12 @@ import ScreenDefault from "../screen_default/ScreenDefault";
 import { useContext } from "react";
 import BotaoOpcoes from "../../components/botao_opcoes/BotaoOpcoes";
 import CardProduto from "../../components/card_produtos/CardProdutos";
-import CartContext from "../../context/CartContext";
 import assado from "../../images/assado.png";
 import batatas from "../../images/batatas.png";
 import bebidas from "../../images/bebidas.png";
 import janta from "../../images/janta.png";
 import porcoes from "../../images/porcoes.png";
+import CartContext from "../../providers/CartContext";
 
 const menu = [
   { id: 1, name: "Bebidas", src: bebidas },

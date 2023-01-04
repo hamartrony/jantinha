@@ -1,7 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import * as React from "react";
-import { AppProvider } from "./src/context/Index";
+import { AppProvider } from "./src/providers/Index";
 import Cadastro from "./src/screens/cadastro/Cadastro";
 import Carrinho from "./src/screens/carrinho/Carrinho";
 import Home from "./src/screens/home/Home";

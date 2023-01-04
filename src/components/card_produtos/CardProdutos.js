@@ -1,24 +1,35 @@
 import { useContext } from "react";
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import { Button, Icon } from "react-native-elements";
-import CartContext from "../../context/CartContext";
 import icone from "../../images/vitaoLogo.jpg";
+import CartContext from "../../providers/CartContext";
+import MenuContext from "../../providers/MenuContext";
 const screenWidth = Dimensions.get("window").width;
 
-export default function CardProduto({ tittle, description, price, img, prod }) {
-  const { cart, addCart, delCart } = useContext(CartContext);
+export default function CardProduto({
+  tittle,
+  description,
+  price,
+  img,
+  quantidade,
+  prod,
+}) {
+  const { cart, addCart, delCart, setCart } = useContext(CartContext);
+  const { addQtd, remQtd } = useContext(MenuContext);
+  //const [qtd, setQtd] = useState(quantidade);
+  //const [produto, setProduto] = useState(prod);
 
-  function cartOptions(item) {
-    //console.log(item);
+  //Iteração com carrinho
+  function cartOptions(prod) {
     return (
       <>
         <Button
-          onPress={() => addCart(item)}
+          onPress={() => addQtd(prod)}
           icon={<Icon name="add" size={20} color="green" />}
         />
-        {/*<Text style={styles.text_cart}>2</Text>*/}
+        <Text style={styles.text_cart}>{prod.qtd ? prod.qtd : 0}</Text>
         <Button
-          onPress={() => delCart(item)}
+          onPress={() => remQtd(prod)}
           icon={<Icon name="remove" size={20} color="red" />}
         ></Button>
       </>
