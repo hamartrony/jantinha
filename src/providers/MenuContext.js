@@ -1,6 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
-import CartContext from "./CartContext";
+import { createContext, useEffect, useState } from "react";
 
 //configuração do Axios para requisição da WEB
 const axs = axios.create({
@@ -15,7 +14,7 @@ const MenuContext = createContext({});
 
 export const MenuProvider = ({ children }) => {
   const [menu, setMenu] = useState([]);
-  const { sendTocart } = useContext(CartContext);
+  //const { sendTocart } = useContext(CartContext);
 
   //Busca do MENU na WEB
   useEffect(() => {
@@ -31,35 +30,37 @@ export const MenuProvider = ({ children }) => {
     console.log("BUSQUEI NA WEB>>>>>>>>>>>>>>>>>>>>>>>>>");
   }, []);
 
-  const addQtd = (produto) => {
-    const newProd = produto;
-    const menuFilter = menu.filter((items) => items !== produto);
-    setMenu(menuFilter);
-    const qtd = produto.qtd ? produto.qtd + 1 : 1;
-    newProd.qtd = qtd;
-    setMenu([...menu, newProd]);
-  };
+  // const addQtd = (produto) => {
+  //   const newProd = produto;
+  //   const menuFilter = menu.filter((items) => items !== produto);
+  //   setMenu(menuFilter);
+  //   const qtd = produto.qtd ? produto.qtd + 1 : 1;
+  //   newProd.qtd = qtd;
+  //   setMenu([...menu, newProd]);
+  // };
 
-  const remQtd = (produto) => {
-    const newProd = produto;
-    const menuFilter = menu.filter((items) => items !== produto);
-    setMenu(menuFilter);
-    const qtd = produto.qtd ? produto.qtd - 1 : 0;
-    newProd.qtd = qtd;
-    setMenu([...menu, newProd]);
-  };
+  // const remQtd = (produto) => {
+  //   const newProd = produto;
+  //   const menuFilter = menu.filter((items) => items !== produto);
+  //   setMenu(menuFilter);
+  //   const qtd = produto.qtd ? produto.qtd - 1 : 0;
+  //   newProd.qtd = qtd;
+  //   setMenu([...menu, newProd]);
+  // };
 
-  const addCart = () => {
-    const menuTotal = menu.filter((produto) => produto.qtd > 0);
-    const menuUnico = menuTotal.filter((v, i, a) => a.indexOf(v) === i);
-    //console.log("MENUUNICOEMMENUCONTEXT", menuUnico);
-    sendTocart(menuUnico);
-  };
+  // const addCart = () => {
+  //   const menuTotal = menu.filter((produto) => produto.qtd > 0);
+  //   const menuUnico = menuTotal.filter((v, i, a) => a.indexOf(v) === i);
+  //   //console.log("MENUUNICOEMMENUCONTEXT", menuUnico);
+  //   sendTocart(menuUnico);
+  // };
+
+  // const setMenuWeb = (menuWeb) => {
+  //   setMenu(menuWeb);
+  // };
 
   return (
-    <MenuContext.Provider value={{ menu, addQtd, remQtd, addCart }}>
-      {children}
-    </MenuContext.Provider>
+    <MenuContext.Provider value={{ menu }}>{children}</MenuContext.Provider>
   );
 };
 

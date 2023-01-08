@@ -1,9 +1,14 @@
-import { useContext } from "react";
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
-import { Button, Icon } from "react-native-elements";
+import { useContext, useState } from "react";
+import {
+  Button,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import icone from "../../images/vitaoLogo.jpg";
 import CartContext from "../../providers/CartContext";
-import MenuContext from "../../providers/MenuContext";
 const screenWidth = Dimensions.get("window").width;
 
 export default function CardProduto({
@@ -14,26 +19,13 @@ export default function CardProduto({
   quantidade,
   prod,
 }) {
-  const { cart, addCart, delCart, setCart } = useContext(CartContext);
-  const { addQtd, remQtd } = useContext(MenuContext);
-  //const [qtd, setQtd] = useState(quantidade);
+  const { cart, addCart, remCart } = useContext(CartContext);
+  const [prodInCart, setProdInCart] = useState(false);
   //const [produto, setProduto] = useState(prod);
 
   //Iteração com carrinho
   function cartOptions(prod) {
-    return (
-      <>
-        <Button
-          onPress={() => addQtd(prod)}
-          icon={<Icon name="add" size={20} color="green" />}
-        />
-        <Text style={styles.text_cart}>{prod.qtd ? prod.qtd : 0}</Text>
-        <Button
-          onPress={() => remQtd(prod)}
-          icon={<Icon name="remove" size={20} color="red" />}
-        ></Button>
-      </>
-    );
+    return <></>;
   }
 
   return (
@@ -43,7 +35,18 @@ export default function CardProduto({
         <Text style={styles.desc}>{description}</Text>
         <View style={styles.price_cart}>
           <Text style={styles.price}>R${parseFloat(price).toFixed(2)}</Text>
-          <View style={styles.cartarea}>{cartOptions(prod)}</View>
+          <View style={styles.cartarea}>
+            <Button
+              onPress={() =>
+                prodInCart === false
+                  ? (addCart(prod), setProdInCart(true))
+                  : (remCart(prod), setProdInCart(false))
+              }
+              title={prodInCart == false ? "Adicionar" : "Remover"}
+              color={prodInCart == false ? "black" : "red"}
+              backgroundColor="red"
+            />
+          </View>
         </View>
       </View>
 
@@ -99,7 +102,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   text_cart: {
+    backgroundColor: "red",
     fontSize: 25,
     alignSelf: "center",
+    color: "orange",
+  },
+  text_cart2: {
+    fontSize: 25,
+    alignSelf: "center",
+    color: "red",
   },
 });
