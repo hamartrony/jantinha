@@ -14,10 +14,22 @@ import Porcao from "./src/screens/secao/Porcao";
 
 const Drawer = createDrawerNavigator();
 
+const MyTheme = {
+  dark: false,
+  colors: {
+    primary: "white",
+    background: "rgb(242, 242, 242)",
+    card: "brown",
+    text: "white",
+    border: "rgb(199, 199, 204)",
+    notification: "white",
+  },
+};
+
 export default function App() {
   return (
     <AppProvider>
-      <NavigationContainer>
+      <NavigationContainer theme={MyTheme}>
         <Drawer.Navigator initialRouteName="Home">
           <Drawer.Screen name="Home" component={Home} />
           <Drawer.Screen name="Login" component={Login} />

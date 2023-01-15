@@ -1,17 +1,17 @@
 import { useContext, useState } from "react";
 import {
-  Button,
   Dimensions,
   Image,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import icone from "../../images/vitaoLogo.jpg";
 import CartContext from "../../providers/CartContext";
 const screenWidth = Dimensions.get("window").width;
 
-export default function CardProduto({
+export default function CardProdutoCart({
   tittle,
   description,
   price,
@@ -21,27 +21,26 @@ export default function CardProduto({
 }) {
   const { cart, addCart, remCart } = useContext(CartContext);
   const [prodInCart, setProdInCart] = useState(false);
-
   //const [produto, setProduto] = useState(prod);
 
   return (
     <View style={styles.container}>
       <View style={styles.info}>
         <Text style={styles.tittle}>{tittle}</Text>
-        <Text style={styles.desc}>{description}</Text>
         <View style={styles.price_cart}>
           <Text style={styles.price}>R${parseFloat(price).toFixed(2)}</Text>
           <View style={styles.cartarea}>
-            <Button
-              onPress={() =>
-                prodInCart === false
-                  ? (addCart(prod), setProdInCart(true))
-                  : (remCart(prod), setProdInCart(false))
-              }
-              title={prodInCart == false ? "Adicionar" : "Remover"}
-              color={prodInCart == false ? "black" : "red"}
-              backgroundColor="red"
-            />
+            <TouchableOpacity
+              style={{
+                backgroundColor: "brown",
+                width: "50%",
+                borderRadius: 10,
+                alignItems: "center",
+              }}
+              onPress={() => remCart(prod)}
+            >
+              <Text style={{ fontSize: 17, color: "white" }}>Remover</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
